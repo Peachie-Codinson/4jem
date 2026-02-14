@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <link rel="preconnect" href="https://sdk.scdn.co" crossorigin>
+<link rel="dns-prefetch" href="https://sdk.scdn.co">
+<link rel="preconnect" href="https://accounts.spotify.com" crossorigin>
+<link rel="dns-prefetch" href="https://accounts.spotify.com">
+<link rel="preconnect" href="https://api.spotify.com" crossorigin>
+<link rel="dns-prefetch" href="https://api.spotify.com">
+<link rel="prefetch" href="https://sdk.scdn.co/spotify-player.js" as="script" crossorigin>
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valentine Desk</title>
+  <link rel="stylesheet" href="./css/bundle.css" />
+
+
+</head>
+<body>
+<div class="val-header">
+  <div class="val-title">Valentine&#39;s proposal</div>
+</div>
+
+
+  <main>
+    <section class="desk" aria-label="Desk">
+      <div class="pile" id="pile">
+        <!-- cluster anchor: centerX = 50% - 140px, centerY = 52% - 160px -->
+<div class="item" data-activity="radio"
+  style="left:calc(50% - 140px + 96px); top:calc(52% - 160px + 12px); transform:rotate(-6deg) scale(1.4); z-index:5;">
+  <div class="svg" data-icon="radio" aria-hidden="true"></div>
+  <!-- <div class="label">Radio</div> -->
+</div>
+
+<div class="item" data-activity="book"
+  style="left:calc(50% - 140px + 26px); top:calc(52% - 160px + 92px); transform:rotate(7deg)  scale(1.2); z-index:4;">
+  <div class="svg" data-icon="book" aria-hidden="true"></div>
+  <!-- <div class="label">Almanac</div> -->
+</div>
+
+
+<div class="item" data-activity="chocolates"
+  style="left:calc(50% - 140px + 36px); top:calc(52% - 160px + 196px); transform:rotate(8deg) scale(1.5); z-index:2;">
+  <div class="svg" data-icon="chocolates" aria-hidden="true"></div>
+  <!-- <div class="label">Chocolates</div> -->
+</div>
+
+<div class="item" data-activity="card"
+  style="left:calc(50% - 140px + 136px); top:calc(52% - 160px + 152px); transform:rotate(-5deg) scale(1.5); z-index:1;">
+  <div class="svg" data-icon="card" aria-hidden="true"></div>
+  <!-- <div class="label">Card</div> -->
+</div>
+
+
+      </div>
+    </section>
+    
+  </main>
+
+  <!-- Modal overlay -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span id="modalTitle">Activity</span>
+          <span class="pill" id="modalTag">stub</span>
+        </div>
+        <button class="close-btn" id="closeBtn" type="button">Close ✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+
+<script>
+  // Prevent "onSpotifyWebPlaybackSDKReady is not defined"
+  // We'll use this to signal readiness.
+  window.__spotifySdkReady = false;
+  window.onSpotifyWebPlaybackSDKReady = () => {
+    window.__spotifySdkReady = true;
+  };
+</script>
+</html>

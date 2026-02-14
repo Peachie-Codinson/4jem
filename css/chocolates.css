@@ -1,0 +1,191 @@
+/* =========================
+   Chocolate activity (heart box)
+   ========================= */
+
+.choco-activity{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  padding: 6px 4px 2px;
+}
+
+.choco-title{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  text-align:center;
+}
+
+.heart-box{
+  position:relative;
+  width: 380px;
+  height: 380px;
+  display:grid;
+  place-items:center;
+}
+
+.heart-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.heart-base{
+  filter: drop-shadow(0 18px 40px rgba(38,10,28,.14));
+}
+
+.heart-lid{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  z-index: 5;
+  transform-origin: 50% 18%;
+  transition: transform .26s ease;
+  filter: drop-shadow(0 14px 22px rgba(38,10,28,.18));
+}
+
+.heart-box[data-open="false"] .heart-lid{
+  transform: translateY(0) rotate(0deg);
+}
+.heart-box[data-open="true"] .heart-lid{
+  transform: translateY(-70px) rotate(-22deg);
+}
+
+.lid-text{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight:700;
+  font-size: 18px;
+  color: rgba(255,255,255,.95);
+  pointer-events:none;
+  line-height:1.15;
+  text-shadow: 0 2px 10px rgba(0,0,0,.20);
+}
+
+.lid-hint{
+  display:block;
+  margin-top:6px;
+  font-size: 11px;
+  font-weight:600;
+  color: rgba(107,78,99,.95);
+}
+
+.choco-grid{
+  position:absolute;
+  left:50%;
+  top:54%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+  grid-template-rows: repeat(3, auto);    /* 3 rows */
+  gap: 10px;
+  padding: 2px;
+  z-index: 2;
+  justify-items:center;
+  align-items:center;
+}
+
+.choco-empty{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  opacity: 0;          /* takes space, but invisible */
+  pointer-events:none; /* can’t be tapped */
+}
+
+.choco{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.18);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 8px 14px rgba(0,0,0,.12);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  font-size: 14px;
+  transition: none;
+}
+
+/* Make the bottom center feel like the true "bottom middle" */
+.choco-main{
+  transform: translateY(6px);
+}
+
+/* Tuck the two bottom corners upward so visually it's 1 in middle-bottom */
+.choco-side{
+  transform: translateY(-8px);
+  opacity: .95;
+}
+
+
+
+
+.choco:active{ transform:none; }
+
+/* Lid flies away, then JS removes it */
+@keyframes lid-fly-away {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-160px) rotate(-28deg); opacity: 0; }
+}
+
+.heart-lid.is-flying {
+  animation: lid-fly-away .32s ease forwards;
+  pointer-events: none;
+}
+
+
+.heart-box[data-open="false"] .choco-grid{
+  opacity:0;
+  transform: translate(-50%, -50%) translateY(8px) scale(.98);
+  pointer-events:none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.heart-box[data-open="true"] .choco-grid{
+  opacity:1;
+  transform: translate(-50%, -50%) translateY(0) scale(1);
+  pointer-events:auto;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.note-panel{
+  width:min(520px, 100%);
+  border-radius: 16px;
+  border:1px solid rgba(42,31,42,.14);
+  background: rgba(255,240,247,.55);
+  padding: 12px 14px;
+  color: rgba(42,31,42,.92);
+}
+
+.note-heading{
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.note-flavor{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  margin: 6px 0 4px;
+}
+
+.note-body{
+  color: rgba(107,78,99,.95);
+  line-height: 1.45;
+}
+
+/* Lid gets removed after first open; this just prevents weird focus outlines */
+.heart-lid:focus{ outline: none; }
