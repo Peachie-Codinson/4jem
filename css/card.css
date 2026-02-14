@@ -3,26 +3,101 @@
   width: 100%;
   display: grid;
   place-items: center;
-  padding: 16px;
+  padding: 1px;
 }
 
-/* nice frame + fixed aspect ratio */
-.card-frame{
-  margin: 0;
-  width: min(520px, 92vw);
-  aspect-ratio: 3 / 4;          /* postcard-ish; change if needed */
-  border-radius: 22px;
-  overflow: hidden;
 
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(42,31,42,.14);
-  box-shadow: 0 20px 60px rgba(0,0,0,.18);
-}
-
-/* image fills container */
 .card-img{
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;            /* use 'contain' if you never want cropping */
+  object-fit: contain;   /* ✅ no cropping */
+}
+
+/* Make the card bigger */
+.card-frame{
+  width: min(820px, 94vw);
+  aspect-ratio: 3 / 4;
+}
+
+/* Make the image clickable */
+.card-zoom{
+  all: unset;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: zoom-in;
+}
+
+/* “Open image” link row */
+.card-actions{
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-link{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(42,31,42,.14);
+  background: rgba(255,255,255,.55);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Lightbox */
+.card-lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+.card-lightbox.open{ display: block; }
+
+.card-lightbox-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+}
+
+.card-lightbox-panel{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(980px, 94vw);
+  max-height: 90vh;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(42,31,42,.14);
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+}
+
+.card-lightbox-img{
+  width: 100%;
+  height: auto;
+  max-height: calc(90vh - 70px);
+  display: block;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(255,255,255,.6);
+}
+
+.card-lightbox-row{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-close{
+  width: 40px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(42,31,42,.14);
+  background: rgba(255,255,255,.65);
+  cursor: pointer;
 }
