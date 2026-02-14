@@ -13,7 +13,7 @@ import { spotifyHandleRedirect } from "./integrations/spotify_pkce.js";
 
 preloadSpotifySDK(); // start downloading ASAP
 const SPOTIFY_CLIENT_ID = "60f7afb18306420d9a44530a5cff6121";
-const SPOTIFY_REDIRECT_URI = "https://peachie-codinson.github.io/4jem/";
+const SPOTIFY_REDIRECT_URI = SPOTIFY_REDIRECT_URI
 // also handle redirect ASAP so token is ready:
 await spotifyHandleRedirect({ clientId: SPOTIFY_CLIENT_ID, redirectUri: SPOTIFY_REDIRECT_URI });
 

@@ -6,7 +6,7 @@ import { createSpotifyRadioController } from "../integrations/spotify_radio_hook
 
 /* ===== CONFIG (safe: client ID only, no secret) ===== */
 const SPOTIFY_CLIENT_ID = "60f7afb18306420d9a44530a5cff6121";
-const SPOTIFY_REDIRECT_URI = window.location.origin + window.location.pathname;
+const SPOTIFY_REDIRECT_URI = "https://peachie-codinson.github.io/4jem/";
 const PLAYLIST_URI = "spotify:playlist:0cocJFpNAR1vsBSqt90qjM";
 const SPOTIFY_SCOPES = [
   "streaming",
