@@ -1,7 +1,7 @@
 // js/activities/card.js
 // Final activity: just an image container
 
-const CARD_IMAGE = "/assets/vdaycard.png"; // <- change to your actual path
+const CARD_IMAGE = "./assets/vdaycard.png"; // <- change to your actual path
 
 export function renderCardActivity(){
   return `
